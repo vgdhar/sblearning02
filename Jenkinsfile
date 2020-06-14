@@ -1,12 +1,12 @@
 node{
-
-  stage('SCM checkout')
+    stage('SCM checkout')
     {
       git 'https://github.com/vgdhar/sblearning02'
     }
   stage('compile-package')
     {
-    sh 'mvn package'
+      def mavenhome=tool name: 'MAVEN_HOME', type: 'maven'
+      sh "${mavenhome}/bin/mvn package"
     }
 
 }
