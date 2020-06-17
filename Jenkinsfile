@@ -2,17 +2,18 @@ pipeline{
 	stages{
     stage('SCM checkout')
     {
-      git 'https://github.com/vgdhar/sblearning02'
+	    steps{git 'https://github.com/vgdhar/sblearning02'}
     }
 	stage('compile-package')
     {
-      def mavenhome=tool name: 'MAVEN_HOME', type: 'maven'
-      sh "${mavenhome}/bin/mvn package"
+	    steps{def mavenhome=tool name: 'MAVEN_HOME', type: 'maven'
+		  sh "${mavenhome}/bin/mvn package"}
     }
     
 
     stage('deploy-to-production')
     {
+	    steps{
 		when
 		{
 		branch 'master'
@@ -39,3 +40,4 @@ pipeline{
 	}
 	}
 	}
+}
