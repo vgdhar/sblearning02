@@ -12,10 +12,7 @@ node{
 
     stage('deploy-to-production')
     {
-        when
-        { 
-            branch 'master'
-        }
+     
         steps
         {
                 withCredentials([usernamePassword(credentialsId: 'tomcat_login', passwordVariable: 'USERPASS', usernameVariable: 'USERNAME')]) {
