@@ -19,8 +19,8 @@ node{
 				sshPublisherDesc(
 		        configName: 'production', 
 		        sshCredentials: [
-		        username: '$USERNAME',
-		        encryptedPassphrase: '$USERPASS'],
+		        username: "$USERNAME",
+		        encryptedPassphrase: "$USERPASS"],
 		        transfers: [
 			    sshTransfer(
 			    cleanRemote: false,
