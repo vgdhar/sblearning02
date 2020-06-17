@@ -11,11 +11,6 @@ node{
     
 
 	stage('deploy-to-production'){
-		when
-		{
-		branch 'master'
-		}
-      
 	withCredentials([usernamePassword(credentialsId: 'tomcat_login', passwordVariable: 'USERPASS', usernameVariable: 'USERNAME')]) {
             sshPublisher (
             failOnError: true, 
