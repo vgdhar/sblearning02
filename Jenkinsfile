@@ -10,7 +10,7 @@ node{
     }
     
 
-    stage('deploy-to-production')
+	stage('deploy-to-production'){
     {
 		when
 		{
