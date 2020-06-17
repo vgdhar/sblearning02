@@ -12,31 +12,26 @@ node{
 
     stage('deploy-to-production')
     {
-     
+		when
+		{
+		branch 'master'
+		}
         steps
         {
-                withCredentials([usernamePassword(credentialsId: 'tomcat_login', passwordVariable: 'USERPASS', usernameVariable: 'USERNAME')]) {
-                 sshPublisher (
-                failOnError: true, 
-                continueOnError: false,
-                publishers: [
-	                sshPublisherDesc(
-		            configName: 'production', 
-		            sshCredentials: [
-		            username: '$USERNAME',
-		            encryptedPassphrase: '$USERPASS'
-						            ],
-		            transfers: [
-			            sshTransfer(
-				        cleanRemote: false,
-				        excludes: '', 
-				        execCommand: 'sudo /usr/bin/systemctl stop tomcat.service && rm -rf /opt/tomcat/tomcat/webapps/sblearning02 && cp /tmp/sblearning02.war /opt/tomcat/tomcat/webapps/ && sudo /usr/bin/systemctl start tomcat.service', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/tmp', remoteDirectorySDF: false, removePrefix: 'target/', sourceFiles: 'target/sblearning02.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)]
-							)
-        
+	withCredentials([usernamePassword(credentialsId: 'tomcat_login', passwordVariable: 'USERPASS', usernameVariable: 'USERNAME')]) {
+            sshPublisher (
+            failOnError: true, 
+            continueOnError: false,
+            publishers: [
+				sshPublisherDesc(
+		        configName: 'production', 
+		        sshCredentials: [
+		        username: '$USERNAME',
+		        encryptedPassphrase: '$USERPASS'],
+		        transfers: [
+			    sshTransfer(
+			    cleanRemote: false,
+			    excludes: '', 
+			    execCommand: 'sudo /usr/bin/systemctl stop tomcat.service && rm -rf /opt/tomcat/tomcat/webapps/sblearning02 && cp /tmp/sblearning02.war /opt/tomcat/tomcat/webapps/ && sudo /usr/bin/systemctl start tomcat.service', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/tmp', remoteDirectorySDF: false, removePrefix: 'target/', sourceFiles: 'target/sblearning02.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
                 }
-          
-        }
-
-    }
-
-}
+                }
