@@ -11,7 +11,7 @@ node{
     
 
 	stage('deploy-to-production'){
-	withCredentials([usernamePassword(credentialsId: 'tomcat_login', passwordVariable: 'USERPASS', usernameVariable: 'USERNAME')]) {
+	withCredentials([usernamePassword(credentialsId: 'tomcat_login', passwordVariable: 'USERPASS', usernameVariable: 'USERNAME')]){
             sshPublisher (
             failOnError: true, 
             continueOnError: false,
