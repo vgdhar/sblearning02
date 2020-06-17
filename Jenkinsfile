@@ -3,12 +3,16 @@ pipeline{
 	stages{
     stage('SCM checkout')
     {
-	    steps{git 'https://github.com/vgdhar/sblearning02'}
+	    steps { 
+		    git 'https://github.com/vgdhar/sblearning02'
+	    	}
     }
 	stage('compile-package')
     {
-	    steps{def mavenhome=tool name: 'MAVEN_HOME', type: 'maven'
-		  sh "${mavenhome}/bin/mvn package"}
+	    steps {
+		    def mavenhome=tool name: 'MAVEN_HOME', type: 'maven'
+		  sh "${mavenhome}/bin/mvn package"
+	    	 }
     }
     
 
