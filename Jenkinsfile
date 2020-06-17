@@ -1,24 +1,17 @@
-pipeline{
-	agent any
-	stages{
+node{
     stage('SCM checkout')
     {
-	    steps { 
 		    git 'https://github.com/vgdhar/sblearning02'
-	    	}
     }
 	stage('compile-package')
     {
-	    steps {
 		    def mavenhome=tool name: 'MAVEN_HOME', type: 'maven'
 		  sh "${mavenhome}/bin/mvn package"
-	    	 }
     }
     
 
     stage('deploy-to-production')
     {
-	    steps{
 		when
 		{
 		branch 'master'
@@ -45,4 +38,3 @@ pipeline{
 	}
 	}
 	}
-}
