@@ -23,13 +23,11 @@ node{
 		        encryptedPassphrase: "$USERPASS"
 				],
 		        transfers: [
-			    sshTransfer(
+			sshTransfer(
 			sourceFiles: 'target/sblearning02.war',
 			removePrefix: 'target/',
 			remoteDirectory: '/tmp',
-			    cleanRemote: false,
-			    excludes: '', 
-			    execCommand: 'sudo /usr/bin/systemctl stop tomcat.service && rm -rf /opt/tomcat/tomcat/webapps/sblearning02 && cp /tmp/sblearning02.war /opt/tomcat/tomcat/webapps/ && sudo /usr/bin/systemctl start tomcat.service'
+			execCommand: 'sudo /usr/bin/systemctl stop tomcat.service && rm -rf /opt/tomcat/tomcat/webapps/sblearning02 && cp /tmp/sblearning02.war /opt/tomcat/tomcat/webapps/ && sudo /usr/bin/systemctl start tomcat.service'
 				)
 				]
 				)
