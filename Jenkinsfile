@@ -24,8 +24,8 @@ node{
 				],
 		        transfers: [
 			sshTransfer(
-			sourceFiles: '/var/lib/jenkins/workspace/sblearning02_pipeline/target/sblearning02.war',
-			removePrefix: '/var/lib/jenkins/workspace/sblearning02_pipeline/target/',
+			sourceFiles: 'target/sblearning02.war',
+			removePrefix: 'target/',
 			remoteDirectory: '/tmp',
 			execCommand: 'sudo /usr/bin/systemctl stop tomcat.service && rm -rf /opt/tomcat/tomcat/webapps/sblearning02 && cp /tmp/sblearning02.war /opt/tomcat/tomcat/webapps/ && sudo /usr/bin/systemctl start tomcat.service'
 				)
