@@ -25,7 +25,7 @@ node{
 		        transfers: [
 			sshTransfer(
 			sourceFiles: 'target/sblearning02.war',
-			removePrefix: 'target/',
+			removePrefix: 'target',
 			remoteDirectory: '/tmp',
 			execCommand: 'touch test.txt'
 				)
