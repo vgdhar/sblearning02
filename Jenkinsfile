@@ -7,7 +7,15 @@ pipeline
         {
             steps
             {
-              git 'https://github.com/vgdhar/sblearning02.git'  
+              git 'https://github.com/vgdhar/sblearning02'  
+            }
+        }
+        stage('compile-package')
+        {
+            steps
+            {
+             def mavenhome=tool name: 'MAVEN_HOME', type: 'maven'
+             sh '${mavenhome}/bin/mvn package'
             }
         }
     }
