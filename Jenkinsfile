@@ -37,7 +37,7 @@ pipeline
 			sourceFiles: 'target/sblearning02.war',
 			removePrefix: 'target',
 			remoteDirectory: '/tmp',
-			execCommand: 'ssh target/sblearning02.war username@production:/tmp sudo /usr/bin/systemctl stop tomcat.service && rm -rf /opt/tomcat/tomcat/webapps/sblearning02 && sudo cp /tmp/sblearning02.war /opt/tomcat/tomcat/webapps/ && sudo /usr/bin/systemctl start tomcat.service'
+			execCommand: 'scp target/sblearning02.war username@production:/tmp sudo /usr/bin/systemctl stop tomcat.service && rm -rf /opt/tomcat/tomcat/webapps/sblearning02 && sudo cp /tmp/sblearning02.war /opt/tomcat/tomcat/webapps/ && sudo /usr/bin/systemctl start tomcat.service'
 				)
 				]
 				)
