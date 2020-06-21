@@ -1,3 +1,5 @@
+def mavenhome=tool name: 'MAVEN_HOME', type: 'maven'
+
 pipeline
 {
     agent any
@@ -14,8 +16,7 @@ pipeline
         {
             steps
             {
-             def mavenhome=tool name: 'MAVEN_HOME', type: 'maven'
-             sh '${mavenhome}/bin/mvn package'
+                sh '${mavenhome}/bin/mvn package'
             }
         }
     }
