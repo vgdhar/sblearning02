@@ -5,7 +5,10 @@ pipeline
     {
         stage('checkout from SCM')
         {
-            git 'https://github.com/vgdhar/sblearning02'
+            steps
+            {
+              git 'https://github.com/vgdhar/sblearning02'  
+            }
         }
     }
 }
