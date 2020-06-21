@@ -3,11 +3,11 @@ pipeline
     agent any
     stages
     {
-        stage('checkout from SCM')
+        stage('SCM Checkout')
         {
             steps
             {
-              git 'https://github.com/vgdhar/sblearning02'  
+              git 'https://github.com/vgdhar/sblearning02.git'  
             }
         }
     }
