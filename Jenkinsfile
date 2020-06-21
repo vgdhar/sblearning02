@@ -23,7 +23,7 @@ pipeline
             {
 		    withCredentials([usernamePassword(credentialsId: 'tomcat_login', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
    				 // some block
-			    sh 'scp -v -o StrictHostKeyChecking=no target/sblearning02.war $USER@13.234.110.144:/tmp'
+			    sh 'scp target/sblearning02.war $USER@13.234.110.144:/tmp'
 				}
 	    }
 	}
