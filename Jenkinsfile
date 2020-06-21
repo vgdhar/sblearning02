@@ -17,7 +17,7 @@ pipeline
                 sh '/opt/maven/bin/mvn package'
             }
         }
-         stage('deploy-to-production'')
+         stage('deploy-to-production')
         {
             steps
             {
