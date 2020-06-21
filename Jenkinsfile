@@ -14,7 +14,7 @@ pipeline
         {
             steps
             {
-                sh '$MAVEN_HOME/bin mvn package'
+                sh 'mvn package'
             }
         }
     }
