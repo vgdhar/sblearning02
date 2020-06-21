@@ -1,5 +1,4 @@
 def mavenhome=tool name: 'MAVEN_HOME', type: 'maven'
-
 pipeline
 {
     agent any
