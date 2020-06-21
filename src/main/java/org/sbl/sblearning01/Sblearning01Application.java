@@ -12,7 +12,7 @@ public class Sblearning01Application extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Sblearning01Application.class, args);
-		System.out.println("Hello Spring Boot app");
+		System.out.println("Hello Spring Boot app. Deployed from Jenkins");
 	}
 
 }
