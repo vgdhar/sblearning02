@@ -21,14 +21,7 @@ pipeline
         {
             steps
             {
-		   // withCredentials([usernamePassword(credentialsId: 'tomcat_login', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-   				 // some block
-			    //sh 'chmod 666 target/sblearning02.war'
-			   // sh 'scp target/sblearning02.war $USER@52.66.190.19:/tmp'
-				//}
-		//sh 'ssh -tt -o StrictHostKeyChecking=no cloud_user@52.66.190.19'
-		sh'scp -o StrictHostKeyChecking=no "target/sblearning02.war" cloud_user@52.66.190.19:"/home/cloud_user"'
-		sh 'sudo /usr/bin/systemctl stop tomcat.service && rm -rf /opt/tomcat/tomcat/webapps/sblearning02 && sudo cp /home/cloud_user/sblearning02.war /opt/tomcat/tomcat/webapps/ && sudo /usr/bin/systemctl start tomcat.service'
+		  sshPublisher(publishers: [sshPublisherDesc(configName: 'production', transfers: [sshTransfer(cleanRemote: false, excludes: '', execCommand: 'sudo /usr/bin/systemctl stop tomcat.service && rm -rf /opt/tomcat/tomcat/webapps/sblearning02 && sudo cp /tmp/sblearning02.war /opt/tomcat/tomcat/webapps/ && sudo /usr/bin/systemctl start tomcat.service', execTimeout: 120000, flatten: false, makeEmptyDirs: false, noDefaultExcludes: false, patternSeparator: '[, ]+', remoteDirectory: '/tmp', remoteDirectorySDF: false, removePrefix: 'target/', sourceFiles: 'target/sblearning02.war')], usePromotionTimestamp: false, useWorkspaceInPromotion: false, verbose: false)])
 
 	    }
 	}
